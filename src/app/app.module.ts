@@ -6,18 +6,20 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FamilyTableComponent } from './family-table/family-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FamilySearchComponent } from './family-search/family-search.component';
 import { MatTableModule } from '@angular/material/table';
+import { ModifyFamilyComponent } from './modify-family/modify-family.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FamilyTableComponent,
-    FamilySearchComponent
+    FamilySearchComponent,
+    ModifyFamilyComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

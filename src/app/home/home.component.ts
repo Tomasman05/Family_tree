@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FamilyService } from '../family.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,9 @@ export class HomeComponent implements OnInit {
   familyMembers: any[] = [];
   filteredFamilyMembers: any[] = [];
   noResults: boolean = false;
+  selectedMemberForModification: any;
 
-  constructor(private familyService: FamilyService) { }
+  constructor(private familyService: FamilyService, private router:Router) {}
 
   ngOnInit() {
     this.familyService.getFamilyMembers().subscribe(
@@ -29,20 +31,35 @@ export class HomeComponent implements OnInit {
   performSearch({ searchText, searchOption }: { searchText: string, searchOption: string }) {
     searchText = searchText.toLowerCase();
 
-    console.log('Search Text:', searchText);
-    console.log('Search Option:', searchOption);
-
     this.filteredFamilyMembers = this.familyMembers.filter(member => {
       const valueToSearch = member[searchOption];
       return valueToSearch && typeof valueToSearch === 'string' && valueToSearch.toLowerCase().includes(searchText);
     });
 
-    console.log('Filtered Family Members:', this.filteredFamilyMembers);
     this.updateNoResults();
   }
 
-  private updateNoResults() {
+  updateNoResults() {
     this.noResults = this.filteredFamilyMembers.length === 0;
   }
-}
 
+  handleModifyClick(member: any) {
+    this.selectedMemberForModification = member;
+  }
+
+
+  updateFamilyMemberData(updatedMember: any) {
+    const index = this.familyMembers.findIndex(member => member.name === updatedMember.name);
+
+    if (index !== -1) {
+      this.familyMembers[index] = { ...this.familyMembers[index], ...updatedMember };
+      this.filteredFamilyMembers = [...this.familyMembers];
+      this.updateNoResults();
+    }
+
+    this.selectedMemberForModification = null;
+  }
+  navigateToModification() {
+    this.router.navigate(['/modify-family']);
+  }
+}
