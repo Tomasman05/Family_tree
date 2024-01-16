@@ -1,0 +1,40 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="table table-striped text-center">
+  
+    <ng-container matColumnDef="nev">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Név</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="date">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Születési dátum</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{ element.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Lakcím</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{ element.address }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="anyjaNeve">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Anyja neve</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{ element.mothers_name }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="apjaNeve">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Apja neve</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{ element.fathers_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lehetsegesHalalIdopont">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Lehetséges halál időpontja</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{ element.possible_death_time }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lehetsegesHalalHely">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Lehetséges halál helye</th>
+      <td class="text-center" mat-cell *matCellDef="let element">{{ element.possible_death_location }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>  

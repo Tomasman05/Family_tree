@@ -1,1 +1,16 @@
-<h1 class="text-center">Family Tree</h1>
+<div class="container">
+    <h1 class="text-center mb-4 ">Family Tree</h1>
+    <app-family-search (searchEvent)="performSearch($event)"></app-family-search>
+  
+    <app-family-table [dataSource]="filteredFamilyMembers"></app-family-table>
+  
+    <ng-container *ngIf="filteredFamilyMembers.length === 0; else results">
+      <p>No results found.</p>
+    </ng-container>
+  
+    <ng-template #results>
+    </ng-template>
+    <footer class="mb-3">
+      <h3 class="text-center">Készítette: Vitovszki Tamás 2024.01.15</h3>
+    </footer>
+  </div>

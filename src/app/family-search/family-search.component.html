@@ -1,0 +1,24 @@
+<form class="form-floating mb-3">
+  <div class="row">
+    <input type="text" placeholder="Search..." class="form-control col-4 ms-3 me-3" id="searchbar" [(ngModel)]="searchText" name="search"/>
+    <button type="button" class="btn btn-success col-2 me-3" (click)="search()">Search</button>
+    <div class="form-check col-1 me-3">
+      <input class="form-check-input " [(ngModel)]="selectedOption" value="name" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Név
+      </label>
+    </div>
+    <div class="form-check col-1 me-3">
+      <input class="form-check-input " [(ngModel)]="selectedOption" value="mothers_name" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Anyja neve
+      </label>
+    </div>
+    <div class="form-check col-1 me-3">
+      <input class="form-check-input" [(ngModel)]="selectedOption" value="fathers_name" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Apja neve
+      </label>
+    </div>
+  </div>
+</form>

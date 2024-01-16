@@ -11,9 +11,9 @@ export class FamilyService {
 
   constructor(private http: HttpClient) {}
 
-  getFamilyMembers(): Observable<any> {
+  getFamilyMembers(): Observable<any[]> {
     const url = `${this.apiUrl}/familytree`;
-    return this.http.get(url);
+    return this.http.get<any[]>(url);
   }
 }
 
