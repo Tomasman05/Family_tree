@@ -1,13 +1,11 @@
 <div class="container">
-  <h1 class="text-center">Family Tree</h1>
+  <h1 class="text-center">Családfa</h1>
   <app-family-search (searchEvent)="performSearch($event)"></app-family-search>
-  <button class="btn btn-warning" (click)="navigateToModification()">Modify Family Members</button>
   <app-family-table [dataSource]="filteredFamilyMembers" (modifyClick)="handleModifyClick($event)"></app-family-table>
-
-  <app-modify-family *ngIf="selectedMemberForModification" [familyMember]="selectedMemberForModification"
-    (saveChanges)="updateFamilyMemberData($event)"></app-modify-family>
+  <h2>Családtagok adatainak szerkesztése</h2>
+  <app-modify-family [familyMembers]="familyMembers"></app-modify-family>
   <div *ngIf="noResults;">
-    <p>No results found.</p>
+    <p>Nincs találat.</p>
   </div>
   
   <footer class="mb-3">
